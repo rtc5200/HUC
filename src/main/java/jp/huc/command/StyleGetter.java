@@ -12,6 +12,7 @@ public class StyleGetter {
 			return null;
 		}
 		Style s;
+		
 		switch(arg)
 		{
 		case "0":s = Style.NONE;break;
