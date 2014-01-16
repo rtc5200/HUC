@@ -1,0 +1,14 @@
+name: HUC
+main: jp.rtc5200.huc.HUC
+version: 1.0
+author: _RailgunS_
+description: This is the plugin that adds many useful commands for HORSEs.
+commands:
+  huc:
+    description: HUC Commands
+    usage: /huc [mode] [args]
+    aliases: h
+    permission: huc.use
+permissions:
+  huc.use:
+    default: op
