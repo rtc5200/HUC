@@ -28,18 +28,17 @@ import org.bukkit.inventory.ItemStack;
 public class CommandGeneral implements CommandExecutor {
 	private HUC huc;
 	DamageEvents de;
-	int range = 5;
 	public CommandGeneral(HUC huc)
 	{
 		this.huc = huc;
-		de = new DamageEvents();
-		huc.getServer().getPluginManager().registerEvents(de,huc);
-		range = huc.getConfig().getInt("EffectRange");
+		de = huc.de;
 	}
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd,
 			String label, String[] args) {
 		ArrayList<Horse> nhs = new ArrayList<Horse>();
+		int range = 5;
+		range = huc.getConfig().getInt("EffectRange");
 		if(sender instanceof ConsoleCommandSender)
 		{
 			sender.sendMessage(ChatColor.RED + "コンソールからは使えません。");

@@ -10,6 +10,7 @@ public class HUC extends JavaPlugin{
 	CommandGeneral cg;
 	Logger log;
 	ConfigLoader cloader;
+	public DamageEvents de;
 	public void onEnable()
 	{
 		log = Logger.getLogger("minecraft");
@@ -17,6 +18,8 @@ public class HUC extends JavaPlugin{
 		cg = new CommandGeneral(this);
 		this.getCommand("huc").setExecutor(cg);
 		cloader = new ConfigLoader(this);
+		de = new DamageEvents();
+		getServer().getPluginManager().registerEvents(de,this);
 		log.info("[HUC]ロード完了");
 	}
 	public void onDisable()
