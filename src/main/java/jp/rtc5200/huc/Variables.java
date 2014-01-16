@@ -13,6 +13,12 @@ public class Variables {
 	public static final String Permission_HSpawn = "huc.hspawn";
 	public static final String Permission_Reload = "huc.reload";
 	public static final String Permission_Variant = "huc.variant";
+	public static final String Permission_Style = "huc.style";
+	public static final String Permission_Color = "huc.color";
+	public static final String Permission_Dome = "huc.dome";
+	public static final String Permission_DismountAll = "huc.dismountall";
+	public static final String Permission_Remove = "huc.remove";
+	public static final String Permission_Name = "huc.name";
 	
 
 }

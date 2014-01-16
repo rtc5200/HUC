@@ -36,7 +36,18 @@ public class CommandGeneral implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd,
 			String label, String[] args) {
-		ArrayList<Horse> nhs = new ArrayList<Horse>();
+		if(sender instanceof Player)
+		{
+			return new PlayerCommand(huc).onCommand(sender, cmd, label, args);
+		}else if(sender instanceof BlockCommandSender)
+		{
+			
+		}else if(sender instanceof ConsoleCommandSender)
+		{
+			
+		}
+		return false;
+	/*	ArrayList<Horse> nhs = new ArrayList<Horse>();
 		int range = 5;
 		range = huc.getConfig().getInt("EffectRange");
 		if(sender instanceof ConsoleCommandSender)
@@ -80,9 +91,9 @@ public class CommandGeneral implements CommandExecutor {
 			sender.sendMessage(ChatColor.GOLD + "引数が足りません。");
 			Utils.sendHelpMessage(sender);
 			return true;
-		}
+		}*/
 		//------
-		
+/*		
 		
 		if(args[0].equalsIgnoreCase("td"))
 		{
@@ -453,7 +464,7 @@ public class CommandGeneral implements CommandExecutor {
 			return true;
 		}
 		Utils.sendHelpMessage(sender);
-		return true;
+		return true;*/
 	}
 
 }

@@ -27,7 +27,7 @@ public class PlayerCommand {
 		this.huc = huc;
 	}
 	public boolean onCommand(CommandSender sender, Command cmd,
-			String label, String[] args,HUC huc){
+			String label, String[] args){
 		int range = huc.getConfig().getInt("EffectRange");
 		Player p = (Player)sender;
 		ArrayList<Horse> nh = new ArrayList<Horse>();
@@ -70,7 +70,7 @@ public class PlayerCommand {
 				p.sendMessage("/huc pspawn [種類] [色] [スタイル] [プレイヤー]");
 				return true;
 			}
-			
+
 			Variant v = VariantGetter.getVariant(args[1]);
 			Color c = ColorGetter.getColor(args[2]);
 			Style s = StyleGetter.getStyle(args[3]);
@@ -114,7 +114,7 @@ public class PlayerCommand {
 			}
 			Horse h = HorseMaker.makeHorse(v, c, s,player.getLocation());
 			h.teleport(player);
-			sender.sendMessage("馬を" + player.getName() + "のもとへスポーンさせました。");
+			p.sendMessage("馬を" + player.getName() + "のもとへスポーンさせました。");
 			player.sendMessage(p.getName() + "からスポーンされました。");
 			h.setPassenger(player);
 			return true;
@@ -254,13 +254,13 @@ public class PlayerCommand {
 			de.setDisabled(huc.getConfig().getBoolean("disable-damage"));
 			return true;
 		}
-		
+
 		if(nh.size() < 1)
 		{
 			p.sendMessage(ChatColor.GOLD.toString() + range + "マス以内に馬がいません。");
 			return true;
 		}
-		
+
 		if(args[0].equalsIgnoreCase("variant"))
 		{
 			if(!p.isOp() || !p.hasPermission(Variables.Permission_Variant))
@@ -288,8 +288,142 @@ public class PlayerCommand {
 			p.sendMessage(ChatColor.AQUA.toString() + nh.size() + ChatColor.RESET + "体の馬を変更しました。");
 			return true;
 		}
-		
-		return false;
+		if(args[0].equalsIgnoreCase("style"))
+		{
+			if(!p.isOp() || !p.hasPermission(Variables.Permission_Style))
+			{
+				p.sendMessage(Variables.NotHavePermission);
+				return true;
+			}
+			if(args.length < 2)
+			{
+				p.sendMessage(ChatColor.GOLD + "スタイルが入力されていません。");
+				Utils.sendHelpOfStyle(p);
+				return true;
+			}
+			Style s = StyleGetter.getStyle(args[1]);
+			if(s == null)
+			{
+				p.sendMessage("スタイルが不正です。");
+				Utils.sendHelpOfStyle(p);
+				return true;
+			}
+			for(Horse h : nh)
+			{
+				h.setStyle(s);
+			}
+			p.sendMessage(ChatColor.AQUA.toString() + nh.size() + ChatColor.RESET + "体の馬を変更しました。");
+			return true;
+		}
+		if(args[0].equalsIgnoreCase("color"))
+		{
+			if(!p.isOp() || !p.hasPermission(Variables.Permission_Color))
+			{
+				p.sendMessage(Variables.NotHavePermission);
+				return true;
+			}
+			if(args.length < 2)
+			{
+				p.sendMessage(ChatColor.GOLD + "色が入力されていません。");
+				Utils.sendHelpOfColor(p);
+				return true;
+			}
+			Color c = ColorGetter.getColor(args[1]);
+			if(c == null)
+			{
+				p.sendMessage("色が不正です。");
+				Utils.sendHelpOfColor(sender);
+				return true;
+			}
+			for(Horse h : nh)
+			{
+				h.setColor(c);
+			}
+			p.sendMessage(ChatColor.AQUA.toString() + nh.size() + ChatColor.RESET + "体の馬を変更しました。");
+			return true;
+		}
+		if(args[0].equalsIgnoreCase("dome"))
+		{
+			if(!p.isOp() || !p.hasPermission(Variables.Permission_Dome))
+			{
+				p.sendMessage(Variables.NotHavePermission);
+				return true;
+			}
+			for(Horse h : nh)
+			{
+				h.setTamed(true);
+			}
+			p.sendMessage(ChatColor.AQUA.toString() + nh.size() + ChatColor.RESET + "体の馬を変更しました。");
+			return true;
+		}
+		if(args[0].equalsIgnoreCase("dismount-all"))
+		{
+			if(!p.isOp() || !p.hasPermission(Variables.Permission_DismountAll))
+			{
+				p.sendMessage(Variables.NotHavePermission);
+				return true;
+			}
+			int count = 0;
+			for(Player pa : Bukkit.getOnlinePlayers())
+			{
+				if(pa.getVehicle() instanceof Horse)
+				{
+					pa.leaveVehicle();
+					count = count + 1;
+				}
+			}
+			p.sendMessage(ChatColor.AQUA.toString() + count +ChatColor.RESET +  "人を馬から降ろしました。");
+			return true;
+		}
+		if(args[0].equalsIgnoreCase("remove"))
+		{
+			if(!p.isOp() || !p.hasPermission(Variables.Permission_Remove))
+			{
+				p.sendMessage(Variables.NotHavePermission);
+				return true;
+			}
+			int count = 0;
+			for(Horse hs : nh)
+			{
+				hs.remove();
+				count = count + 1;
+			}
+			p.sendMessage(ChatColor.AQUA.toString() + count + ChatColor.RESET + "体削除しました。");
+			return true;		
+		}
+		if(args[0].equalsIgnoreCase("name"))
+		{
+			if(!p.isOp() || !p.hasPermission(Variables.Permission_Name))
+			{
+				p.sendMessage(Variables.NotHavePermission);
+				return true;
+			}
+			if(args.length == 1)
+			{
+				for(Horse hs : nh)
+				{
+					hs.setCustomName("");
+					hs.setCustomNameVisible(false);
+				}
+				sender.sendMessage("名前を削除しました。");
+				return true;
+			}else{
+				for(Horse hs : nh)
+				{		
+					hs.setCustomName(args[1]);
+					hs.setCustomNameVisible(true);
+				}
+				sender.sendMessage("名前を設定しました");
+				return true;
+			}
+		}
+		if(args[0].equalsIgnoreCase("help"))
+		{
+			Utils.sendHelpMessage(p);
+			return true;
+		}
+		Utils.sendHelpMessage(p);
+		return true;
 	}
 
 }
