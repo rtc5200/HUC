@@ -12,8 +12,20 @@ public class StyleGetter {
 			return null;
 		}
 		Style s;
-		
-		switch(arg)
+		if(arg.equalsIgnoreCase("random"))
+		{
+			s = getRandomStyle();
+		}else{
+			switch(arg)
+			{
+			case "0":arg = "NONE";break;
+			case "1":arg = "BLACK_DOTS";break;
+			case "2":arg = "WHITE_DOTS";break;
+			case "3":arg = "WHITE";break;
+			case "4":arg = "WHITEFIELD";break;
+			}
+			s = Style.valueOf(arg);
+			/*switch(arg)
 		{
 		case "0":s = Style.NONE;break;
 		case "1":s = Style.BLACK_DOTS;break;
@@ -33,6 +45,7 @@ public class StyleGetter {
 		case "random": s = getRandomStyle();break;
 		case "RANDOM": s = getRandomStyle();break;
 		default: s = null;break;
+		}*/
 		}
 		return s;
 		

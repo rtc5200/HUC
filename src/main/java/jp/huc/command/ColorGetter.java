@@ -11,8 +11,23 @@ public class ColorGetter {
 		{
 			return null;
 		}
-		Color c = null;
-		switch(arg)
+		Color c;
+		if(arg.equalsIgnoreCase("random"))
+		{
+			c = getRandomColor();
+		}else{
+			switch(arg)
+			{
+			case "0": arg = "BLACK";break;
+			case "1": arg = "BROWN";break;
+			case "2": arg = "CHESTNUT";break;
+			case "3": arg = "CREAMY";break;
+			case "4": arg = "DARK_BROWN";break;
+			case "5": arg = "GRAY";break;
+			case "6": arg = "WHITE";break;
+			}
+			c = Color.valueOf(arg);
+			/*switch(arg)
 		{
 		case "0":c = Color.BLACK;break;
 		case "1":c = Color.BROWN;break;
@@ -30,6 +45,7 @@ public class ColorGetter {
 		case "WHITE": c = Color.WHITE;break;
 		case "random": c = getRandomColor();break;
 		default:c = null;	
+		}*/
 		}
 		return c;
 	}

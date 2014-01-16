@@ -11,8 +11,23 @@ public class VariantGetter {
 		{
 			return null;
 		}
-		Variant v = null;
-		switch(arg)
+		Variant v;
+		if(arg.equalsIgnoreCase("random"))
+		{
+			v = getRandomVariant();
+		}else{
+			switch(arg)
+			{
+			case "0": arg = "HORSE";break;
+			case "1": arg = "DONKEY";break;
+			case "2": arg = "MULE";break;
+			case "3": arg = "UNDEAD_HORSE";break;
+			case "4": arg = "SKELETON_HORSE";break;
+			case "UNDEAD":arg = "UNDEAD_HORSE";break;
+			case "SKELETON":arg = "SKELETON_HORSE";break;
+			}
+			v = Variant.valueOf(arg);
+			/*switch(arg)
 		{
 		case "0": v = Variant.HORSE;break; 
 		case "1": v = Variant.DONKEY;break;
@@ -31,14 +46,14 @@ public class VariantGetter {
 		case "SKELTON": v = Variant.SKELETON_HORSE;break;
 		case "random": v = getRandomVariant();break;
 		case "RANDOM": v = getRandomVariant();break;
+		}*/
 		}
 		return v;
-		
 	}
 	public static  Variant getRandomVariant()
 	{
 		Random r = new Random();
-		int i = r.nextInt(3);
+		int i = r.nextInt(4);
 		Variant v = null;
 		switch(i)
 		{
