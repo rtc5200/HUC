@@ -1,11 +1,11 @@
-package jp.huc.command;
+package jp._RS_.huc.command;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.rtc5200.huc.DamageEvents;
-import jp.rtc5200.huc.HUC;
-import jp.rtc5200.huc.Utils;
+import jp._RS_.huc.DamageEvents;
+import jp._RS_.huc.HUC;
+import jp._RS_.huc.Utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -36,6 +36,12 @@ public class CommandGeneral implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd,
 			String label, String[] args) {
+		if(args == null || args.length < 1)
+		{
+			sender.sendMessage("");
+			Utils.sendHelpMessage(sender);
+			return true;
+		}
 		if(sender instanceof Player)
 		{
 			return new PlayerCommand(huc).onCommand(sender, cmd, label, args);

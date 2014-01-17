@@ -1,4 +1,4 @@
-package jp.huc.command;
+package jp._RS_.huc.command;
 
 import java.util.Random;
 
@@ -24,7 +24,13 @@ public class StyleGetter {
 			case "3":arg = "WHITE";break;
 			case "4":arg = "WHITEFIELD";break;
 			}
-			s = Style.valueOf(arg);
+			try{
+				s = Style.valueOf(arg);
+			}catch(IllegalArgumentException e)
+			{
+				s=null;
+			}
+			
 			/*switch(arg)
 		{
 		case "0":s = Style.NONE;break;

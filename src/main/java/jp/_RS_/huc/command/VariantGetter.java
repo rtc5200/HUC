@@ -1,4 +1,4 @@
-package jp.huc.command;
+package jp._RS_.huc.command;
 
 import java.util.Random;
 
@@ -26,7 +26,13 @@ public class VariantGetter {
 			case "UNDEAD":arg = "UNDEAD_HORSE";break;
 			case "SKELETON":arg = "SKELETON_HORSE";break;
 			}
-			v = Variant.valueOf(arg);
+			try{
+				v = Variant.valueOf(arg);
+			}catch(IllegalArgumentException e)
+			{
+				v = null;
+			}
+			
 			/*switch(arg)
 		{
 		case "0": v = Variant.HORSE;break; 

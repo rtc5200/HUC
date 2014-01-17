@@ -1,4 +1,4 @@
-package jp.huc.command;
+package jp._RS_.huc.command;
 
 import java.util.Random;
 
@@ -26,7 +26,13 @@ public class ColorGetter {
 			case "5": arg = "GRAY";break;
 			case "6": arg = "WHITE";break;
 			}
-			c = Color.valueOf(arg);
+			try{
+				c = Color.valueOf(arg);
+			}catch(IllegalArgumentException e)
+			{
+				c = null;
+			}
+			
 			/*switch(arg)
 		{
 		case "0":c = Color.BLACK;break;

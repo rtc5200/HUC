@@ -1,9 +1,9 @@
-package jp.rtc5200.huc;
+package jp._RS_.huc;
 
 import java.util.logging.Logger;
 
-import jp.huc.command.*;
-import jp.huc.config.ConfigLoader;
+import jp._RS_.huc.command.*;
+import jp._RS_.huc.config.ConfigLoader;
 
 import org.bukkit.plugin.java.JavaPlugin;
 public class HUC extends JavaPlugin{

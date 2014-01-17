@@ -1,4 +1,4 @@
-package jp.rtc5200.huc;
+package jp._RS_.huc;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 public class Utils {
@@ -50,6 +51,16 @@ public class Utils {
 		s.sendMessage(ChatColor.GREEN + "pspawn:指定プレイヤーへ馬をスポーンさせ、乗せる");
 		s.sendMessage(ChatColor.GREEN + "lspawn:指定座標で馬をスポーンさせる");
 		s.sendMessage(ChatColor.GREEN + "hspawn:コマンドを使ったプレイヤー/コマブロへ馬をスポーンさせる");
+		s.sendMessage(ChatColor.GREEN + "relaod:config.ymlを再読み込みする");
+	}
+	public  static void sendHelpOfConsole(ConsoleCommandSender s)
+	{
+		s.sendMessage("/huc [コマンド] [引数]");
+		s.sendMessage(ChatColor.GREEN + "コンソールで使えるコマンド一覧");
+		s.sendMessage(ChatColor.GREEN + "dismount-all:全員を馬から降ろす");
+		s.sendMessage(ChatColor.GREEN + "td:馬のダメージ有効/無効切り替え");
+		s.sendMessage(ChatColor.GREEN + "pspawn:指定プレイヤーへ馬をスポーンさせ、乗せる");
+		s.sendMessage(ChatColor.GREEN + "lspawn:指定座標で馬をスポーンさせる");
 		s.sendMessage(ChatColor.GREEN + "relaod:config.ymlを再読み込みする");
 	}
 	public static void sendHelpOfVariant(CommandSender s)

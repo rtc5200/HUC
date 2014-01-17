@@ -1,4 +1,4 @@
-package jp.rtc5200.huc;
+package jp._RS_.huc;
 
 import org.bukkit.ChatColor;
 

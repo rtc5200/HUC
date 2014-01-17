@@ -1,6 +1,6 @@
-package jp.huc.command;
+package jp._RS_.huc.command;
 
-import jp.rtc5200.huc.Utils;
+import jp._RS_.huc.Utils;
 
 import org.bukkit.*;
 import org.bukkit.entity.*;

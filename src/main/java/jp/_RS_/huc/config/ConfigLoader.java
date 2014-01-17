@@ -1,8 +1,8 @@
-package jp.huc.config;
+package jp._RS_.huc.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import jp.rtc5200.huc.HUC;
+import jp._RS_.huc.HUC;
 
 public class ConfigLoader {
 	private HUC huc;

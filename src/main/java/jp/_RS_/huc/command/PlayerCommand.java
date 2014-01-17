@@ -1,11 +1,11 @@
-package jp.huc.command;
+package jp._RS_.huc.command;
 
 import java.util.ArrayList;
 
-import jp.rtc5200.huc.DamageEvents;
-import jp.rtc5200.huc.HUC;
-import jp.rtc5200.huc.Utils;
-import jp.rtc5200.huc.Variables;
+import jp._RS_.huc.DamageEvents;
+import jp._RS_.huc.HUC;
+import jp._RS_.huc.Utils;
+import jp._RS_.huc.Variables;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -135,7 +135,13 @@ public class PlayerCommand {
 			Variant v = VariantGetter.getVariant(args[1]);
 			Color c = ColorGetter.getColor(args[2]);
 			Style s = StyleGetter.getStyle(args[3]);
-			Location loc = p.getLocation();
+			Location loc;
+			try{
+				loc = new Location(Utils.getWorld(),Double.parseDouble(args[4]),Double.parseDouble(args[5]),Double.parseDouble(args[6]));
+			}catch(NumberFormatException e)
+			{
+				loc = null;
+			}
 			boolean error = false;
 			String ers = "";
 			if(v == null)
@@ -254,7 +260,11 @@ public class PlayerCommand {
 			de.setDisabled(huc.getConfig().getBoolean("disable-damage"));
 			return true;
 		}
-
+		if(!Utils.getCommands().contains(args[0]))
+		{
+			Utils.sendHelpMessage(p);
+			return true;
+		}
 		if(nh.size() < 1)
 		{
 			p.sendMessage(ChatColor.GOLD.toString() + range + "マス以内に馬がいません。");
