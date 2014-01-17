@@ -1,5 +1,5 @@
 name: HUC
-main: jp.rtc5200.huc.HUC
+main: jp._RS_.huc.HUC
 version: 1.0
 author: _RailgunS_
 description: This is the plugin that adds many useful commands for HORSEs.
@@ -8,7 +8,64 @@ commands:
     description: HUC Commands
     usage: /huc [mode] [args]
     aliases: h
-    permission: huc.use
 permissions:
-  huc.use:
-    default: op
+  huc.*:
+    description: permit one to use all those commands
+    children:
+      huc.td: true
+      huc.pspawn: true
+      huc.lspawn: true
+      huc.hspawn: true
+      huc.reload: true
+      huc.variant: true
+      huc.style: true
+      huc.color: true
+      huc.dome: true
+      huc.dismountall: true
+      huc.remove: true
+      huc.name: true
+  huc.admin:
+    description: permit one to be administration
+    children:
+      huc.td: true
+      huc.pspawn: true
+      huc.lspawn: true
+      huc.hspawn: true
+      huc.reload: true
+      huc.variant: true
+      huc.style: true
+      huc.color: true
+      huc.dome: true
+      huc.dismountall: true
+      huc.remove: true
+      huc.name: true
+  huc.spawner:
+    description: permit one to spawn any horses
+    children:
+      huc.pspawn: true
+      huc.lspawn: true
+      huc.hspawn: true
+  huc.td:
+    description: let one to toggle damagable
+  huc.pspawn:
+    description: let one to spawn any horses to anyone.
+  huc.lspawn:
+    description: let one to spawn any horses to specific location
+  huc.hspawn:
+    description: let one to spawn one's own horses.
+  huc.reload:
+    description: let one to reload config
+  huc.variant:
+    description: let one to change variant
+  huc.style:
+    description: let one to change style
+  huc.color:
+    description: let one to change color
+  huc.dome:
+    description: let one to domesticate
+  huc.dismountall:
+    description: let one to dismount all online players
+  huc.remove:
+    description: let one to remove horses
+  huc.name:
+    description: let one to name

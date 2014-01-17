@@ -33,7 +33,6 @@ public class CommandBlockCommand {
 			String label, String[] args) {
 		int range = huc.getConfig().getInt("EffectRange");
 		Block b = ((BlockCommandSender)sender).getBlock();
-		CommandBlock cb = (CommandBlock)b;
 		Location bloc = b.getLocation();
 		ArrayList<Horse> nh = new ArrayList<Horse>();
 		DamageEvents de = huc.de;
@@ -93,7 +92,7 @@ public class CommandBlockCommand {
 			Horse h = HorseMaker.makeHorse(v, c, s,player.getLocation());
 			h.teleport(player);
 			h.setPassenger(player);
-			player.sendMessage(cb.getName() + "からスポーンされました。");
+			player.sendMessage("馬がスポーンされました。");
 			return true;
 		}
 		if(args[0].equalsIgnoreCase("lspawn"))

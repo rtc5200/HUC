@@ -38,7 +38,7 @@ public class CommandGeneral implements CommandExecutor {
 			String label, String[] args) {
 		if(args == null || args.length < 1)
 		{
-			sender.sendMessage("");
+			sender.sendMessage("引数が足りません。");
 			Utils.sendHelpMessage(sender);
 			return true;
 		}
@@ -47,10 +47,10 @@ public class CommandGeneral implements CommandExecutor {
 			return new PlayerCommand(huc).onCommand(sender, cmd, label, args);
 		}else if(sender instanceof BlockCommandSender)
 		{
-			
+			return new CommandBlockCommand(huc).onCommand(sender, cmd, label, args);
 		}else if(sender instanceof ConsoleCommandSender)
 		{
-			
+			return new ConsoleCommand(huc).onCommand(sender, cmd, label, args);
 		}
 		return false;
 	/*	ArrayList<Horse> nhs = new ArrayList<Horse>();

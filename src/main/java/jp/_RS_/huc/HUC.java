@@ -26,5 +26,9 @@ public class HUC extends JavaPlugin{
 	{
 		log.info("[HUC]終了...");
 	}
+	public void reloadDamageEvents()
+	{
+		de.setDisabled(this.getConfig().getBoolean(Variables.Config_Path_DisableDamage));
+	}
 
 }

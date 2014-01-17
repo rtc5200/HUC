@@ -41,7 +41,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("td"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_ToggleDamage))
+			if( !p.hasPermission(Variables.Permission_ToggleDamage))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -59,7 +59,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("pspawn"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_PSpawn))
+			if( !p.hasPermission(Variables.Permission_PSpawn))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -121,7 +121,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("lspawn"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_LSpawn))
+			if( !p.hasPermission(Variables.Permission_LSpawn))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -188,7 +188,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("hspawn"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_HSpawn))
+			if( !p.hasPermission(Variables.Permission_HSpawn))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -249,7 +249,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("reload"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_Reload))
+			if( !p.hasPermission(Variables.Permission_Reload))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -273,7 +273,7 @@ public class PlayerCommand {
 
 		if(args[0].equalsIgnoreCase("variant"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_Variant))
+			if( !p.hasPermission(Variables.Permission_Variant))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -300,7 +300,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("style"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_Style))
+			if( !p.hasPermission(Variables.Permission_Style))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -327,7 +327,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("color"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_Color))
+			if( !p.hasPermission(Variables.Permission_Color))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -354,7 +354,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("dome"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_Dome))
+			if( !p.hasPermission(Variables.Permission_Dome))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -368,7 +368,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("dismount-all"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_DismountAll))
+			if( !p.hasPermission(Variables.Permission_DismountAll))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -387,7 +387,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("remove"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_Remove))
+			if( !p.hasPermission(Variables.Permission_Remove))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
@@ -403,7 +403,7 @@ public class PlayerCommand {
 		}
 		if(args[0].equalsIgnoreCase("name"))
 		{
-			if(!p.isOp() || !p.hasPermission(Variables.Permission_Name))
+			if( !p.hasPermission(Variables.Permission_Name))
 			{
 				p.sendMessage(Variables.NotHavePermission);
 				return true;

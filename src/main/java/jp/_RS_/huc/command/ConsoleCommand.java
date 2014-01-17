@@ -107,7 +107,13 @@ public class ConsoleCommand {
 			Variant v = VariantGetter.getVariant(args[1]);
 			Color c = ColorGetter.getColor(args[2]);
 			Style s = StyleGetter.getStyle(args[3]);
-			Location loc = new Location(Utils.getWorld(),Double.parseDouble(args[4]),Double.parseDouble(args[5]),Double.parseDouble(args[6]));
+			Location loc = null;
+			try{
+				loc = new Location(Utils.getWorld(),Double.parseDouble(args[4]),Double.parseDouble(args[5]),Double.parseDouble(args[6]));
+			}catch(NumberFormatException e)
+			{
+				loc = null;
+			} 
 			boolean error = false;
 			String ers = "";
 			if(v == null)
@@ -159,8 +165,22 @@ public class ConsoleCommand {
 			de.setDisabled(huc.getConfig().getBoolean("disable-damage"));
 			return true;
 		}
-		return false;
 		
+			if(args[0].equalsIgnoreCase("dismount-all"))
+			{
+				int count = 0;
+				for(Player pa : Bukkit.getOnlinePlayers())
+				{
+					if(pa.getVehicle() instanceof Horse)
+					{
+						pa.leaveVehicle();
+						count = count + 1;
+					}
+				}
+				sender.sendMessage(ChatColor.AQUA.toString() + count +ChatColor.RESET +  "人を馬から降ろしました。");
+				return true;
+			}
+		return false;
 	}
 
 }
