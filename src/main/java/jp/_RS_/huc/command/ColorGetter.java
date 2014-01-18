@@ -12,7 +12,7 @@ public class ColorGetter {
 			return null;
 		}
 		Color c;
-		if(arg.equalsIgnoreCase("random"))
+		if(arg.equalsIgnoreCase("random") || arg.equalsIgnoreCase("r"))
 		{
 			c = getRandomColor();
 		}else{

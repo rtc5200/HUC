@@ -12,7 +12,7 @@ public class StyleGetter {
 			return null;
 		}
 		Style s;
-		if(arg.equalsIgnoreCase("random"))
+		if(arg.equalsIgnoreCase("random") || arg.equalsIgnoreCase("r"))
 		{
 			s = getRandomStyle();
 		}else{

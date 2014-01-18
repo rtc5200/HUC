@@ -1,38 +1,34 @@
 package jp._RS_.huc.command;
 
 import java.util.ArrayList;
-
 import jp._RS_.huc.DamageEvents;
 import jp._RS_.huc.HUC;
 import jp._RS_.huc.Utils;
 import jp._RS_.huc.Variables;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
-import org.bukkit.entity.Player;
 import org.bukkit.entity.Horse.Color;
 import org.bukkit.entity.Horse.Style;
 import org.bukkit.entity.Horse.Variant;
+import org.bukkit.entity.Player;
 
 public class PlayerCommand {
-	HUC huc;
+	private HUC huc;
 
 	public PlayerCommand(HUC huc) {
 		this.huc = huc;
 	}
 	public boolean onCommand(CommandSender sender, Command cmd,
 			String label, String[] args){
-		int range = huc.getConfig().getInt("EffectRange");
+		int range =huc.getConfigHandler().getRange();
 		Player p = (Player)sender;
 		ArrayList<Horse> nh = new ArrayList<Horse>();
-		DamageEvents de = huc.de;
-		for(Entity e : p.getNearbyEntities(range*2, 0, range*2))
+		for(Entity e : p.getNearbyEntities(range, 0, range))
 		{
 			if(e instanceof Horse)
 			{
@@ -46,13 +42,13 @@ public class PlayerCommand {
 				p.sendMessage(Variables.NotHavePermission);
 				return true;
 			}
-			if(de.getDisabled())
+			if(huc.getDEvent().getDisabled())
 			{
-				de.setDisabled(false);
+				huc.getDEvent().setDisabled(false);
 				p.sendMessage("ダメージを" +"有効" + "にしました。");
 				return true;
 			}else{
-				de.setDisabled(true);
+				huc.getDEvent().setDisabled(true);
 				p.sendMessage("ダメージを" + "無効" + "にしました。");
 				return true;
 			}
@@ -255,12 +251,12 @@ public class PlayerCommand {
 				return true;
 			}
 			huc.reloadConfig();
-			p.sendMessage("config.ymlを再読み込みしました。");
 			range = huc.getConfig().getInt("EffectRange");
-			de.setDisabled(huc.getConfig().getBoolean("disable-damage"));
+			huc.reload();
+			p.sendMessage("config.ymlを再読み込みしました。");
 			return true;
 		}
-		if(!Utils.getCommands().contains(args[0]))
+		if(args[0].equalsIgnoreCase("help"))
 		{
 			Utils.sendHelpMessage(p);
 			return true;
@@ -427,11 +423,7 @@ public class PlayerCommand {
 				return true;
 			}
 		}
-		if(args[0].equalsIgnoreCase("help"))
-		{
-			Utils.sendHelpMessage(p);
-			return true;
-		}
+		
 		Utils.sendHelpMessage(p);
 		return true;
 	}

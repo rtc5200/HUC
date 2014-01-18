@@ -1,24 +1,22 @@
 package jp._RS_.huc;
 
 import java.util.logging.Logger;
-
 import jp._RS_.huc.command.*;
-import jp._RS_.huc.config.ConfigLoader;
-
+import jp._RS_.huc.config.ConfigHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 public class HUC extends JavaPlugin{
-	CommandGeneral cg;
-	Logger log;
-	ConfigLoader cloader;
-	public DamageEvents de;
+	private CommandGeneral cg;
+	private Logger log;
+	private ConfigHandler config;
+	private DamageEvents de;
 	public void onEnable()
 	{
 		log = Logger.getLogger("minecraft");
 		log.info("[HUC]ロード中....");
+		config = ConfigHandler.load(this);
 		cg = new CommandGeneral(this);
 		this.getCommand("huc").setExecutor(cg);
-		cloader = new ConfigLoader(this);
-		de = new DamageEvents();
+		de = new DamageEvents(this);
 		getServer().getPluginManager().registerEvents(de,this);
 		log.info("[HUC]ロード完了");
 	}
@@ -26,9 +24,19 @@ public class HUC extends JavaPlugin{
 	{
 		log.info("[HUC]終了...");
 	}
-	public void reloadDamageEvents()
+	public void reload()
 	{
-		de.setDisabled(this.getConfig().getBoolean(Variables.Config_Path_DisableDamage));
+		this.reloadConfig();
+		config = ConfigHandler.load(this);
+		de.loadDisabled(config);
+	}
+	public DamageEvents getDEvent()
+	{
+		return de;
+	}
+	public ConfigHandler getConfigHandler()
+	{
+		return config;
 	}
 
 }

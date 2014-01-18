@@ -1,42 +1,31 @@
 package jp._RS_.huc.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jp._RS_.huc.DamageEvents;
 import jp._RS_.huc.HUC;
 import jp._RS_.huc.Utils;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import jp._RS_.huc.Variables;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Horse;
-import org.bukkit.entity.Horse.Color;
-import org.bukkit.entity.Horse.Style;
-import org.bukkit.entity.Horse.Variant;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 public class CommandGeneral implements CommandExecutor {
 	private HUC huc;
-	DamageEvents de;
 	public CommandGeneral(HUC huc)
 	{
 		this.huc = huc;
-		de = huc.de;
 	}
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd,
 			String label, String[] args) {
 		if(args == null || args.length < 1)
+		{
+			sender.sendMessage("引数が足りません。");
+			Utils.sendHelpMessage(sender);
+			return true;
+		}
+		if(!Variables.getCommandsList().contains(args[0]))
 		{
 			sender.sendMessage("引数が足りません。");
 			Utils.sendHelpMessage(sender);

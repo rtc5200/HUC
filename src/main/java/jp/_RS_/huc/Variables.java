@@ -1,5 +1,7 @@
 package jp._RS_.huc;
 
+import java.util.ArrayList;
+
 import org.bukkit.ChatColor;
 
 public class Variables {
@@ -22,6 +24,16 @@ public class Variables {
 	//------コンフィグ------//
 	public static final String Config_Path_EffectRange = "EffectRange";
 	public static final String Config_Path_DisableDamage = "Disable-Damage";
-	
+	public static final String[] Commands = {"td","pspawn","lspawn","hspawn","reload","variant","style","color","dome","dismount-all","remove","name","help"};
+	private static ArrayList<String> CommandsList = new ArrayList<String>();
+	public static ArrayList<String> getCommandsList()
+	{
+		CommandsList.clear();
+		for(String s : Commands)
+		{
+			CommandsList.add(s);
+		}
+		return CommandsList;
+	}
 
 }

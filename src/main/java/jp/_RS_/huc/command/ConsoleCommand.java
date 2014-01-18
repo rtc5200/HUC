@@ -25,16 +25,15 @@ public class ConsoleCommand {
 
 	public boolean onCommand(CommandSender sender, Command cmd,
 			String label, String[] args) {
-		DamageEvents de = huc.de;
 		if(args[0].equalsIgnoreCase("td"))
 		{
-			if(de.getDisabled())
+			if(huc.getDEvent().getDisabled())
 			{
-				de.setDisabled(false);
+				huc.getDEvent().setDisabled(false);
 				sender.sendMessage("ダメージを" +"有効" + "にしました。");
 				return true;
 			}else{
-				de.setDisabled(true);
+				huc.getDEvent().setDisabled(true);
 				sender.sendMessage("ダメージを" + "無効" + "にしました。");
 				return true;
 			}
@@ -160,9 +159,8 @@ public class ConsoleCommand {
 		}
 		if(args[0].equalsIgnoreCase("reload"))
 		{
-			huc.reloadConfig();
+			huc.reload();
 			sender.sendMessage("config.ymlを再読み込みしました。");
-			de.setDisabled(huc.getConfig().getBoolean("disable-damage"));
 			return true;
 		}
 		

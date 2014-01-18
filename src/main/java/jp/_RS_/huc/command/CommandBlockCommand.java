@@ -31,11 +31,10 @@ public class CommandBlockCommand {
 
 	public boolean onCommand(CommandSender sender, Command cmd,
 			String label, String[] args) {
-		int range = huc.getConfig().getInt("EffectRange");
+		int range = huc.getConfigHandler().getRange();
 		Block b = ((BlockCommandSender)sender).getBlock();
 		Location bloc = b.getLocation();
 		ArrayList<Horse> nh = new ArrayList<Horse>();
-		DamageEvents de = huc.de;
 		for(Entity e : b.getWorld().getEntities())	
 		{
 			if(bloc.distance(e.getLocation()) <= range)
@@ -46,14 +45,15 @@ public class CommandBlockCommand {
 				}
 			}
 		}
+		
 		if(args[0].equalsIgnoreCase("td"))
 		{
-			if(de.getDisabled())
+			if(huc.getDEvent().getDisabled())
 			{
-				de.setDisabled(false);
+				huc.getDEvent().setDisabled(false);
 				return true;
 			}else{
-				de.setDisabled(true);
+				huc.getDEvent().setDisabled(true);
 				return true;
 			}
 		}
@@ -173,9 +173,7 @@ public class CommandBlockCommand {
 		}
 		if(args[0].equalsIgnoreCase("reload"))
 		{
-			huc.reloadConfig();
-			range = huc.getConfig().getInt("EffectRange");
-			de.setDisabled(huc.getConfig().getBoolean("disable-damage"));
+			huc.reload();
 			return true;
 		}
 		

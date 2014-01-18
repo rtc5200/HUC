@@ -12,7 +12,7 @@ public class VariantGetter {
 			return null;
 		}
 		Variant v;
-		if(arg.equalsIgnoreCase("random"))
+		if(arg.equalsIgnoreCase("random") || arg.equalsIgnoreCase("r"))
 		{
 			v = getRandomVariant();
 		}else{

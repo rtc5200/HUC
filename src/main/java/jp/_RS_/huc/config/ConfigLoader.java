@@ -7,6 +7,7 @@ import jp._RS_.huc.Variables;
 public class ConfigLoader {
 	private HUC huc;
 	private FileConfiguration config;
+	
 	public ConfigLoader(HUC huc)
 	{
 		this.huc = huc;
