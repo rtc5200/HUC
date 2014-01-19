@@ -28,13 +28,22 @@ public class PlayerCommand {
 		int range =huc.getConfigHandler().getRange();
 		Player p = (Player)sender;
 		ArrayList<Horse> nh = new ArrayList<Horse>();
-		for(Entity e : p.getNearbyEntities(range, 0, range))
+		for(Entity e : p.getWorld().getEntitiesByClass(Horse.class))
+		{
+			double dd = Utils.Jijou(p.getLocation().distance(e.getLocation()));
+			double rr = Utils.Jijou(range);
+			if(dd < rr ){
+				Horse h = (Horse) e;
+				nh.add(h);
+			}
+		}
+		/*for(Entity e : p.getNearbyEntities(range, 0, range))
 		{
 			if(e instanceof Horse)
 			{
 				nh.add((Horse) e);
 			}
-		}
+		}*/
 		if(args[0].equalsIgnoreCase("td"))
 		{
 			if( !p.hasPermission(Variables.Permission_ToggleDamage))
@@ -261,11 +270,11 @@ public class PlayerCommand {
 			Utils.sendHelpMessage(p);
 			return true;
 		}
-		if(nh.size() < 1)
+		/*if(nh.size() < 1)
 		{
 			p.sendMessage(ChatColor.GOLD.toString() + range + "マス以内に馬がいません。");
 			return true;
-		}
+		}*/
 
 		if(args[0].equalsIgnoreCase("variant"))
 		{

@@ -2,7 +2,6 @@ package jp._RS_.huc.command;
 
 import jp._RS_.huc.HUC;
 import jp._RS_.huc.Utils;
-import jp._RS_.huc.Variables;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -25,12 +24,12 @@ public class CommandGeneral implements CommandExecutor {
 			Utils.sendHelpMessage(sender);
 			return true;
 		}
-		if(!Variables.getCommandsList().contains(args[0]))
+		/*if(!Variables.getCommandsList().contains(args[0]))
 		{
 			sender.sendMessage("引数が足りません。");
 			Utils.sendHelpMessage(sender);
 			return true;
-		}
+		}*/
 		if(sender instanceof Player)
 		{
 			return new PlayerCommand(huc).onCommand(sender, cmd, label, args);

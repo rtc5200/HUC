@@ -24,6 +24,8 @@ permissions:
       huc.dismountall: true
       huc.remove: true
       huc.name: true
+      huc.csign: true
+      huc.bsign: true
   huc.admin:
     description: permit one to be administration
     children:
@@ -39,12 +41,16 @@ permissions:
       huc.dismountall: true
       huc.remove: true
       huc.name: true
+      huc.csign: true
+      huc.bsign: true
   huc.spawner:
     description: permit one to spawn any horses
     children:
       huc.pspawn: true
       huc.lspawn: true
       huc.hspawn: true
+      huc.csign: true
+      huc.bsign: true
   huc.td:
     description: let one to toggle damagable
   huc.pspawn:
@@ -69,3 +75,10 @@ permissions:
     description: let one to remove horses
   huc.name:
     description: let one to name
+  huc.csign:
+    description: allow player to create spawn sign
+  huc.usign:
+    description: allow player to use spawn sign
+    default: true
+  huc.bsign:
+    description: allow player to break spawn sign

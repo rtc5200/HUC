@@ -176,12 +176,6 @@ public class CommandBlockCommand {
 			huc.reload();
 			return true;
 		}
-		
-		if(nh.size() < 1)
-		{
-			return true;
-		}
-		
 		if(args[0].equalsIgnoreCase("variant"))
 		{
 			if(args.length < 2)

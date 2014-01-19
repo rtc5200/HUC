@@ -56,7 +56,7 @@ public class VariantGetter {
 		}
 		return v;
 	}
-	public static  Variant getRandomVariant()
+	private static  Variant getRandomVariant()
 	{
 		Random r = new Random();
 		int i = r.nextInt(4);

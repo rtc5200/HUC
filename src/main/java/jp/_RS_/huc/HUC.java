@@ -1,8 +1,13 @@
 package jp._RS_.huc;
 
 import java.util.logging.Logger;
+
 import jp._RS_.huc.command.*;
 import jp._RS_.huc.config.ConfigHandler;
+import jp._RS_.huc.sign.SignBreakEvent;
+import jp._RS_.huc.sign.SignCreateEvent;
+import jp._RS_.huc.sign.SignSpawnEvent;
+
 import org.bukkit.plugin.java.JavaPlugin;
 public class HUC extends JavaPlugin{
 	private CommandGeneral cg;
@@ -18,6 +23,9 @@ public class HUC extends JavaPlugin{
 		this.getCommand("huc").setExecutor(cg);
 		de = new DamageEvents(this);
 		getServer().getPluginManager().registerEvents(de,this);
+		getServer().getPluginManager().registerEvents(new SignCreateEvent(this), this);
+		getServer().getPluginManager().registerEvents(new SignSpawnEvent(this),this);
+		getServer().getPluginManager().registerEvents(new SignBreakEvent(this), this);
 		log.info("[HUC]ロード完了");
 	}
 	public void onDisable()

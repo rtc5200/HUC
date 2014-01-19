@@ -21,6 +21,9 @@ public class Variables {
 	public static final String Permission_DismountAll = "huc.dismountall";
 	public static final String Permission_Remove = "huc.remove";
 	public static final String Permission_Name = "huc.name";
+	public static final String Permission_CreateSign = "huc.csign";
+	public static final String Permission_UseSign = "huc.usign";
+	public static final String Permission_BreakSign = "huc.bsign";
 	//------コンフィグ------//
 	public static final String Config_Path_EffectRange = "EffectRange";
 	public static final String Config_Path_DisableDamage = "Disable-Damage";

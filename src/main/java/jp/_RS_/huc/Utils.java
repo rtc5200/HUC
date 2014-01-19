@@ -148,5 +148,9 @@ public class Utils {
 		c.add("reload");
 		return c;
 	}
+	public static double Jijou(double i)
+	{
+		return i*i;
+	}
 
 }
