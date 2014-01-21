@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -97,8 +98,8 @@ public class Utils {
 	{
 		s.sendMessage(ChatColor.GREEN + "スタイル:");
 		s.sendMessage(ChatColor.GREEN + "NONE(0):なし");
-		s.sendMessage(ChatColor.GREEN + "BLACK_DOT(1):黒斑点");
-		s.sendMessage(ChatColor.GREEN + "WHITE_DOT(2):白斑点");
+		s.sendMessage(ChatColor.GREEN + "BLACK_DOTS(1):黒斑点");
+		s.sendMessage(ChatColor.GREEN + "WHITE_DOTS(2):白斑点");
 		s.sendMessage(ChatColor.GREEN + "WHITE(3):白縞");
 		s.sendMessage(ChatColor.GREEN + "WHITEFIELD(4):白しみ");
 		s.sendMessage(ChatColor.GREEN + "random:ランダム");
@@ -113,6 +114,7 @@ public class Utils {
 		s.sendMessage(ChatColor.GREEN + "DARK_BROWN(4):暗めの茶色");
 		s.sendMessage(ChatColor.GREEN + "GRAY(5):灰色");
 		s.sendMessage(ChatColor.GREEN + "WHITE(6):白");
+		s.sendMessage(ChatColor.GREEN + "random:ランダム");
 	}
 	public static void sendHelpOfColor(Player s)
 	{
@@ -124,6 +126,7 @@ public class Utils {
 		s.sendMessage(ChatColor.GREEN + "DARK_BROWN(4):暗めの茶色");
 		s.sendMessage(ChatColor.GREEN + "GRAY(5):灰色");
 		s.sendMessage(ChatColor.GREEN + "WHITE(6):白");
+		s.sendMessage(ChatColor.GREEN + "random:ランダム");
 	}
 	public static double RoundingUp(double d)
 	{
@@ -151,6 +154,14 @@ public class Utils {
 	public static double Jijou(double i)
 	{
 		return i*i;
+	}
+	public static String ConvertLocationToString(Location loc)
+	{
+		double x = loc.getBlockX();
+		double y = loc.getBlockY();
+		double z = loc.getBlockZ();
+		String result = "(" + x + "," + y + "," + z + ")";
+		return result;
 	}
 
 }

@@ -71,8 +71,8 @@ public class PlayerCommand {
 			}
 			if(args.length < 5)
 			{
-				p.sendMessage("引数が足りません。");
-				p.sendMessage("/huc pspawn [種類] [色] [スタイル] [プレイヤー]");
+				p.sendMessage(Variables.NotEnoughArgs);
+				p.sendMessage(Variables.Syntax_PSpawn);
 				return true;
 			}
 
@@ -114,7 +114,7 @@ public class PlayerCommand {
 			{
 				p.sendMessage("引数でエラーが発生しました。以下の通りです。");
 				p.sendMessage(ers);
-				p.sendMessage("/huc pspawn [種類] [色] [スタイル] [プレイヤー]");
+				p.sendMessage(Variables.Syntax_PSpawn);
 				return true;
 			}
 			Horse h = HorseMaker.makeHorse(v, c, s,player.getLocation());
@@ -133,8 +133,8 @@ public class PlayerCommand {
 			}
 			if(args.length < 7)
 			{
-				p.sendMessage("引数が足りません。");
-				p.sendMessage("/huc lspawn [種類] [色] [スタイル] [x] [y] [z]");
+				p.sendMessage(Variables.NotEnoughArgs);
+				p.sendMessage(Variables.Syntax_LSpawn);
 				return true;
 			}
 			Variant v = VariantGetter.getVariant(args[1]);
@@ -181,14 +181,11 @@ public class PlayerCommand {
 			{
 				p.sendMessage("引数でエラーが発生しました。以下の通りです。");
 				p.sendMessage(ers);
-				p.sendMessage("/huc lspawn [種類] [色] [スタイル] [x] [y] [z]");
+				p.sendMessage(Variables.Syntax_LSpawn);
 				return true;
 			}
 			Horse h = HorseMaker.makeHorse(v, c, s,loc);
-			double x = Utils.RoundingUp(loc.getX());
-			double y = Utils.RoundingUp(loc.getY());
-			double z = Utils.RoundingUp(loc.getZ());
-			p.sendMessage("馬を" + ChatColor.UNDERLINE + "(" + x + "," + y + "," + z + ")" + ChatColor.RESET +  "へスポーンさせました。");
+			p.sendMessage("馬を" + ChatColor.UNDERLINE + Utils.ConvertLocationToString(loc) + ChatColor.RESET +  "へスポーンさせました。");
 			return true;
 		}
 		if(args[0].equalsIgnoreCase("hspawn"))
@@ -200,8 +197,8 @@ public class PlayerCommand {
 			}
 			if(args.length < 4)
 			{
-				p.sendMessage("引数が足りません。");
-				p.sendMessage("/huc hspawn [種類] [色] [スタイル]");
+				p.sendMessage(Variables.NotEnoughArgs);
+				p.sendMessage(Variables.Syntax_HSpawn);
 				return true;
 			}
 			Variant v = VariantGetter.getVariant(args[1]);
@@ -242,14 +239,11 @@ public class PlayerCommand {
 			{
 				p.sendMessage("引数でエラーが発生しました。以下の通りです。");
 				p.sendMessage(ers);
-				p.sendMessage("/huc hspawn [種類] [色] [スタイル]");
+				p.sendMessage(Variables.Syntax_HSpawn);
 				return true;
 			}
 			Horse h = HorseMaker.makeHorse(v, c, s,loc);
-			double x = Utils.RoundingUp(loc.getX());
-			double y = Utils.RoundingUp(loc.getY());
-			double z = Utils.RoundingUp(loc.getZ());
-			p.sendMessage("馬を" +ChatColor.UNDERLINE + "(" + x + "," + y + "," + z + ")" + ChatColor.RESET + "へスポーンさせました。");
+			p.sendMessage("馬を" +ChatColor.UNDERLINE + Utils.ConvertLocationToString(loc) + ChatColor.RESET + "へスポーンさせました。");
 			return true;
 		}
 		if(args[0].equalsIgnoreCase("reload"))
@@ -260,9 +254,9 @@ public class PlayerCommand {
 				return true;
 			}
 			huc.reloadConfig();
-			range = huc.getConfig().getInt("EffectRange");
 			huc.reload();
-			p.sendMessage("config.ymlを再読み込みしました。");
+			range = huc.getConfigHandler().getRange();
+			p.sendMessage(Variables.Message_Reloaded);
 			return true;
 		}
 		if(args[0].equalsIgnoreCase("help"))
@@ -285,7 +279,7 @@ public class PlayerCommand {
 			}
 			if(args.length < 2)
 			{
-				p.sendMessage(ChatColor.GOLD + "種類が入力されていません。");
+				p.sendMessage(ChatColor.RED + "種類が入力されていません。");
 				Utils.sendHelpOfVariant(p);
 				return true;
 			}

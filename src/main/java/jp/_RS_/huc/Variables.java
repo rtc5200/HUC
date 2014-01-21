@@ -8,6 +8,12 @@ public class Variables {
 
 	//------メッセージ-------//
 	public static final String NotHavePermission = ChatColor.RED + "権限がありません。権限設定を確認してください。";
+	public static final String NotEnoughArgs = "引数が足りません。";
+	public static final String Message_Reloaded = "config.ymlを再読み込みしました。";
+	public static final String Syntax_PSpawn = "/huc pspawn [種類] [色] [スタイル] [プレイヤー]";
+	public static final String Syntax_LSpawn = "/huc lspawn [種類] [色] [スタイル] [x] [y] [z]";
+	public static final String Syntax_HSpawn ="/huc hspawn [種類] [色] [スタイル]";
+	
 	//------権限-------//
 	public static final String Permission_ToggleDamage = "huc.td";
 	public static final String Permission_PSpawn = "huc.pspawn";
